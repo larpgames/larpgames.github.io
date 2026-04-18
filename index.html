@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LARP Games — Unblocked Games Hub</title>
+  <meta name="description" content="Play hundreds of free unblocked games online. Flash, HTML5, driving, action, and more." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     TOP NAVIGATION
+══════════════════════════════════════ -->
+<nav class="topnav">
+  <button id="sidebarToggle" aria-label="Toggle sidebar">☰</button>
+
+  <a href="index.html" class="nav-logo">
+    <span class="logo-glitch">LARP GAMES</span>
+  </a>
+
+  <div class="nav-search-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none"
+         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    </svg>
+    <input type="search" id="gameSearch" placeholder="Search games…" autocomplete="off" />
+  </div>
+
+  <div class="nav-spacer"></div>
+  <span class="nav-tag">larpgames.github.io</span>
+</nav>
+
+<!-- ══════════════════════════════════════
+     LAYOUT SHELL
+══════════════════════════════════════ -->
+<div class="shell">
+
+  <!-- ── SIDEBAR ── -->
+  <aside id="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Navigation</div>
+      <a href="index.html" class="nav-link">
+        <span class="nav-icon">🏠</span> Home
+      </a>
+      <a href="#featured" class="nav-link">
+        <span class="nav-icon">⭐</span> Featured
+      </a>
+      <a href="#new-games" class="nav-link">
+        <span class="nav-icon">🆕</span> New Games
+        <span class="nav-count">+12</span>
+      </a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Categories</div>
+
+      <!-- Flash Games sub-menu -->
+      <a href="#flash" class="nav-link nav-parent" onclick="toggleSub('sub-flash',this);return false;">
+        <span class="nav-icon">⚡</span> Flash Games
+        <span class="arrow">▶</span>
+      </a>
+      <div id="sub-flash" class="nav-sub">
+        <a href="#flash" class="nav-link">Hobo Series</a>
+        <a href="#flash" class="nav-link">Riddle School</a>
+        <a href="#flash" class="nav-link">Bloons TD</a>
+        <a href="#flash" class="nav-link">Gun Mayhem</a>
+        <a href="#flash" class="nav-link">Papa's Series</a>
+        <a href="#flash" class="nav-link">Fireboy & Watergirl</a>
+      </div>
+
+      <!-- Driving sub-menu -->
+      <a href="#driving" class="nav-link nav-parent" onclick="toggleSub('sub-driving',this);return false;">
+        <span class="nav-icon">🚗</span> Driving Games
+        <span class="arrow">▶</span>
+      </a>
+      <div id="sub-driving" class="nav-sub">
+        <a href="#driving" class="nav-link">Drift Games</a>
+        <a href="#driving" class="nav-link">Monster Trucks</a>
+        <a href="#driving" class="nav-link">Racing</a>
+        <a href="#driving" class="nav-link">Bikes & Stunts</a>
+      </div>
+
+      <a href="#action" class="nav-link">
+        <span class="nav-icon">🔫</span> Action
+        <span class="nav-count">30+</span>
+      </a>
+      <a href="#sports" class="nav-link">
+        <span class="nav-icon">⚽</span> Sports
+        <span class="nav-count">20+</span>
+      </a>
+      <a href="#pokemon" class="nav-link nav-parent" onclick="toggleSub('sub-pokemon',this);return false;">
+        <span class="nav-icon">🎮</span> Pokémon
+        <span class="arrow">▶</span>
+      </a>
+      <div id="sub-pokemon" class="nav-sub">
+        <a href="#pokemon" class="nav-link">Fire Red</a>
+        <a href="#pokemon" class="nav-link">Emerald</a>
+        <a href="#pokemon" class="nav-link">Tower Defense</a>
+        <a href="#pokemon" class="nav-link">ROM Hacks</a>
+      </div>
+
+      <a href="#io-games" class="nav-link">
+        <span class="nav-icon">🌐</span> .IO Games
+      </a>
+      <a href="#clicker" class="nav-link">
+        <span class="nav-icon">🍪</span> Clicker Games
+      </a>
+      <a href="#horror" class="nav-link">
+        <span class="nav-icon">👻</span> Horror
+      </a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">More</div>
+      <a href="#embed-zone" class="nav-link">
+        <span class="nav-icon">📺</span> Play Now
+      </a>
+      <a href="#" class="nav-link">
+        <span class="nav-icon">📬</span> Contact
+      </a>
+    </div>
+
+  </aside>
+  <div id="sidebarOverlay"></div>
+
+  <!-- ══════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════ -->
+  <main class="main">
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+      <canvas id="particleCanvas"></canvas>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">// larpgames.github.io — free to play</p>
+        <h1 class="hero-title">PLAY ANY<br>GAME.<br>ANYWHERE.</h1>
+        <p class="hero-sub">
+          Hundreds of unblocked games — Flash, HTML5, action, driving, sports, horror &amp; more. Zero installs. Pure fun.
+        </p>
+        <div class="hero-buttons">
+          <a href="#featured" class="btn btn-primary">▶ Browse Games</a>
+          <a href="#new-games" class="btn btn-ghost">🆕 What's New</a>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-badge">
+          <div class="stat-num">300+</div>
+          <div class="stat-label">GAMES</div>
+        </div>
+        <div class="stat-badge">
+          <div class="stat-num">FREE</div>
+          <div class="stat-label">ALWAYS</div>
+        </div>
+        <div class="stat-badge">
+          <div class="stat-num">HTML5</div>
+          <div class="stat-label">READY</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CATEGORY PILLS ── -->
+    <div class="category-row">
+      <span class="category-pill active">🌟 All</span>
+      <span class="category-pill">⚡ Flash</span>
+      <span class="category-pill">🚗 Driving</span>
+      <span class="category-pill">🔫 Action</span>
+      <span class="category-pill">⚽ Sports</span>
+      <span class="category-pill">🎮 Pokémon</span>
+      <span class="category-pill">🌐 .IO</span>
+      <span class="category-pill">🍪 Clicker</span>
+      <span class="category-pill">👻 Horror</span>
+      <span class="category-pill">🏃 Platformer</span>
+    </div>
+
+    <!-- ══════════════════════
+         MAIN CONTENT WRAP
+    ══════════════════════ -->
+    <div class="content-wrap">
+
+      <!-- ── FEATURED SECTION ── -->
+      <section id="featured">
+        <div class="section-header">
+          <div class="section-icon">⭐</div>
+          <span class="section-title">FEATURED GAMES</span>
+          <div class="section-line"></div>
+          <span class="section-count">TOP PICKS</span>
+        </div>
+
+        <div class="games-grid">
+
+          <!-- Featured large card -->
+          <div class="game-card featured reveal" onclick="loadGame('https://smashkarts.io', 'Smash Karts')">
+            <div class="game-thumb-placeholder">🏎️
+              <span class="featured-badge">FEATURED</span>
+              <div class="play-overlay"><div class="play-btn">▶</div></div>
+            </div>
+            <div class="game-info">
+              <div class="game-title">Smash Karts</div>
+              <div class="game-meta">
+                <span class="game-tag hot">🔥 HOT</span>
+                <span class="game-tag">Multiplayer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('https://scratch.mit.edu/projects/embed/12/', 'OvO')">
+            <div class="game-thumb-placeholder">🏃</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">OvO</div>
+              <div class="game-meta"><span class="game-tag">Platformer</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('https://1v1.lol', '1v1.LOL')">
+            <div class="game-thumb-placeholder">🎯</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">1v1.LOL</div>
+              <div class="game-meta">
+                <span class="game-tag hot">🔥 HOT</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('https://cookieclicker.me', 'Cookie Clicker')">
+            <div class="game-thumb-placeholder">🍪</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Cookie Clicker</div>
+              <div class="game-meta"><span class="game-tag">Clicker</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Run 3')">
+            <div class="game-thumb-placeholder">🌌</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Run 3</div>
+              <div class="game-meta"><span class="game-tag">Endless Runner</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Drift Hunters')">
+            <div class="game-thumb-placeholder">🚙</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Drift Hunters</div>
+              <div class="game-meta"><span class="game-tag new">✨ NEW</span></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── EMBEDDED GAME PLAYER ── -->
+      <section id="embed-zone" class="embed-section">
+        <div class="section-header">
+          <div class="section-icon">📺</div>
+          <span class="section-title">GAME PLAYER</span>
+          <div class="section-line"></div>
+          <span class="section-count" id="embed-game-name">SELECT A GAME</span>
+        </div>
+
+        <div class="embed-wrapper">
+          <div class="embed-header">
+            <div class="embed-dots">
+              <div class="embed-dot red"></div>
+              <div class="embed-dot yellow"></div>
+              <div class="embed-dot green"></div>
+            </div>
+            <span class="embed-title" id="embed-label">// click any game card to load it here</span>
+          </div>
+
+          <!-- ✏️ TO ADD A GAME: replace the placeholder div below with:
+               <iframe class="embed-frame" id="gameFrame" src="YOUR_GAME_URL" allow="fullscreen" allowfullscreen></iframe>
+               OR keep the placeholder and click a game card above. -->
+          <div class="embed-placeholder" id="embedPlaceholder">
+            <div class="placeholder-icon">🕹️</div>
+            <p>// NO GAME LOADED</p>
+            <code>Click any game card above to play it here</code>
+          </div>
+          <iframe class="embed-frame" id="gameFrame" src="" allow="fullscreen" allowfullscreen
+                  style="display:none;"></iframe>
+        </div>
+
+        <div class="embed-actions">
+          <button class="embed-btn" onclick="reloadGame()">↺ Reload</button>
+          <button class="embed-btn" onclick="fullscreenGame()">⛶ Fullscreen</button>
+          <button class="embed-btn" onclick="clearGame()">✕ Close</button>
+        </div>
+
+        <!-- ✏️ ADD MORE EMBED SLOTS BELOW — copy this block and rename IDs -->
+        <div class="divider"></div>
+        <div class="section-header">
+          <div class="section-icon">📺</div>
+          <span class="section-title">SLOT 2 — CUSTOM EMBED</span>
+          <div class="section-line"></div>
+        </div>
+        <div class="embed-wrapper">
+          <div class="embed-header">
+            <div class="embed-dots">
+              <div class="embed-dot red"></div>
+              <div class="embed-dot yellow"></div>
+              <div class="embed-dot green"></div>
+            </div>
+            <span class="embed-title">// paste your iframe src below</span>
+          </div>
+          <!-- ✏️ Replace placeholder with your own iframe src -->
+          <div class="embed-placeholder">
+            <div class="placeholder-icon">🎮</div>
+            <p>// CUSTOM GAME SLOT</p>
+            <code>&lt;iframe src="YOUR_URL_HERE" class="embed-frame"&gt;&lt;/iframe&gt;</code>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ── NEW GAMES ── -->
+      <section id="new-games">
+        <div class="section-header">
+          <div class="section-icon">🆕</div>
+          <span class="section-title">NEW GAMES</span>
+          <div class="section-line"></div>
+          <span class="section-count">JUST ADDED</span>
+        </div>
+
+        <div class="games-grid">
+
+          <div class="game-card" onclick="loadGame('#', 'Buckshot Roulette')">
+            <div class="game-thumb-placeholder">🔫</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Buckshot Roulette</div>
+              <div class="game-meta"><span class="game-tag new">✨ NEW</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Deltarune')">
+            <div class="game-thumb-placeholder">❤️</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Deltarune</div>
+              <div class="game-meta"><span class="game-tag">RPG</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Stumble Guys')">
+            <div class="game-thumb-placeholder">🏆</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Stumble Guys</div>
+              <div class="game-meta"><span class="game-tag new">✨ NEW</span><span class="game-tag">Party</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Friday Night Funkin')">
+            <div class="game-thumb-placeholder">🎵</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Friday Night Funkin</div>
+              <div class="game-meta"><span class="game-tag hot">🔥</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Cluster Rush')">
+            <div class="game-thumb-placeholder">🚛</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Cluster Rush</div>
+              <div class="game-meta"><span class="game-tag">Action</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Melon Playground')">
+            <div class="game-thumb-placeholder">🍉</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Melon Playground</div>
+              <div class="game-meta"><span class="game-tag new">✨ NEW</span></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── FLASH GAMES ── -->
+      <section id="flash">
+        <div class="section-header">
+          <div class="section-icon">⚡</div>
+          <span class="section-title">FLASH GAMES</span>
+          <div class="section-line"></div>
+          <span class="section-count">CLASSICS</span>
+        </div>
+
+        <div class="games-grid">
+
+          <div class="game-card" onclick="loadGame('#', 'Happy Wheels')">
+            <div class="game-thumb-placeholder">🚴</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Happy Wheels</div>
+              <div class="game-meta"><span class="game-tag">Classic</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Hobo Prison Brawl')">
+            <div class="game-thumb-placeholder">👊</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Hobo Prison Brawl</div>
+              <div class="game-meta"><span class="game-tag">Fighting</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Bloons TD 5')">
+            <div class="game-thumb-placeholder">🎈</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Bloons TD 5</div>
+              <div class="game-meta"><span class="game-tag">Tower Def</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Super Smash Flash 2')">
+            <div class="game-thumb-placeholder">⚔️</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Super Smash Flash 2</div>
+              <div class="game-meta"><span class="game-tag hot">🔥</span><span class="game-tag">Fighting</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Fireboy & Watergirl')">
+            <div class="game-thumb-placeholder">🔥</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Fireboy & Watergirl</div>
+              <div class="game-meta"><span class="game-tag">Co-op</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Gun Mayhem 2')">
+            <div class="game-thumb-placeholder">🔫</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Gun Mayhem 2</div>
+              <div class="game-meta"><span class="game-tag">Action</span></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── DRIVING GAMES ── -->
+      <section id="driving">
+        <div class="section-header">
+          <div class="section-icon">🚗</div>
+          <span class="section-title">DRIVING GAMES</span>
+          <div class="section-line"></div>
+          <span class="section-count">SPEED RUN</span>
+        </div>
+
+        <div class="games-grid">
+
+          <div class="game-card" onclick="loadGame('#', 'Moto X3M Winter')">
+            <div class="game-thumb-placeholder">🏍️</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Moto X3M Winter</div>
+              <div class="game-meta"><span class="game-tag">Bike</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Drift Boss')">
+            <div class="game-thumb-placeholder">🌀</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Drift Boss</div>
+              <div class="game-meta"><span class="game-tag hot">🔥</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Snow Rider')">
+            <div class="game-thumb-placeholder">🏔️</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Snow Rider</div>
+              <div class="game-meta"><span class="game-tag">Racing</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Tanuki Sunset')">
+            <div class="game-thumb-placeholder">🦝</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Tanuki Sunset</div>
+              <div class="game-meta"><span class="game-tag">Skateboard</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'GTA 1')">
+            <div class="game-thumb-placeholder">🏙️</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">GTA 1</div>
+              <div class="game-meta"><span class="game-tag">Classic</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Slow Roads')">
+            <div class="game-thumb-placeholder">🌿</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Slow Roads</div>
+              <div class="game-meta"><span class="game-tag new">✨ NEW</span></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── SPORTS ── -->
+      <section id="sports">
+        <div class="section-header">
+          <div class="section-icon">⚽</div>
+          <span class="section-title">SPORTS</span>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="games-grid">
+
+          <div class="game-card" onclick="loadGame('#', 'Basketball Legends')">
+            <div class="game-thumb-placeholder">🏀</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Basketball Legends</div>
+              <div class="game-meta"><span class="game-tag hot">🔥</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Soccer Random')">
+            <div class="game-thumb-placeholder">⚽</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Soccer Random</div>
+              <div class="game-meta"><span class="game-tag">2-Player</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Basket Random')">
+            <div class="game-thumb-placeholder">🏀</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Basket Random</div>
+              <div class="game-meta"><span class="game-tag">2-Player</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Football Bros')">
+            <div class="game-thumb-placeholder">🏈</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Football Bros</div>
+              <div class="game-meta"><span class="game-tag">2-Player</span></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── POKEMON ── -->
+      <section id="pokemon">
+        <div class="section-header">
+          <div class="section-icon">🎮</div>
+          <span class="section-title">POKÉMON SERIES</span>
+          <div class="section-line"></div>
+          <span class="section-count">GBA ROMS + HACKS</span>
+        </div>
+
+        <div class="games-grid">
+
+          <div class="game-card featured reveal" onclick="loadGame('#', 'Pokemon Emerald')">
+            <div class="game-thumb-placeholder" style="font-size:3.5rem; aspect-ratio:16/7;">
+              🌿
+              <span class="featured-badge">CLASSIC</span>
+              <div class="play-overlay"><div class="play-btn">▶</div></div>
+            </div>
+            <div class="game-info">
+              <div class="game-title">Pokémon Emerald</div>
+              <div class="game-meta"><span class="game-tag hot">🔥 Fan Fave</span><span class="game-tag">GBA</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Pokemon Fire Red')">
+            <div class="game-thumb-placeholder">🔥</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Pokémon Fire Red</div>
+              <div class="game-meta"><span class="game-tag">GBA</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Pokemon Tower Defense')">
+            <div class="game-thumb-placeholder">🗼</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Tower Defense</div>
+              <div class="game-meta"><span class="game-tag">Strategy</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Pokemon Unbound')">
+            <div class="game-thumb-placeholder">⛓️</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Pokémon Unbound</div>
+              <div class="game-meta"><span class="game-tag new">✨ ROM Hack</span></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── HORROR ── -->
+      <section id="horror">
+        <div class="section-header">
+          <div class="section-icon">👻</div>
+          <span class="section-title">HORROR &amp; SURVIVAL</span>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="games-grid">
+
+          <div class="game-card" onclick="loadGame('#', 'FNAF')">
+            <div class="game-thumb-placeholder">🍕</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Five Nights at Freddy's</div>
+              <div class="game-meta"><span class="game-tag hot">🔥</span><span class="game-tag">Horror</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Granny')">
+            <div class="game-thumb-placeholder">🏚️</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Granny</div>
+              <div class="game-meta"><span class="game-tag">Survival</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Backrooms 2')">
+            <div class="game-thumb-placeholder">🟨</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Backrooms 2</div>
+              <div class="game-meta"><span class="game-tag new">✨ NEW</span></div>
+            </div>
+          </div>
+
+          <div class="game-card" onclick="loadGame('#', 'Baldi\'s Basics')">
+            <div class="game-thumb-placeholder">📏</div>
+            <div class="play-overlay"><div class="play-btn">▶</div></div>
+            <div class="game-info">
+              <div class="game-title">Baldi's Basics</div>
+              <div class="game-meta"><span class="game-tag">Horror</span></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /.content-wrap -->
+
+    <!-- ── FOOTER ── -->
+    <footer class="site-footer">
+      <div class="footer-logo">LARP GAMES</div>
+      <div class="footer-sub">larpgames.github.io &nbsp;·&nbsp; free unblocked games &nbsp;·&nbsp; play anywhere</div>
+    </footer>
+
+  </main>
+</div>
+
+<!-- ── SCROLL TO TOP ── -->
+<button id="scrollTop" title="Back to top">▲</button>
+
+<script src="shared.js"></script>
+<script>
+  /* ── Sub-menu toggle ── */
+  function toggleSub(id, el) {
+    const sub = document.getElementById(id);
+    if (!sub) return;
+    sub.classList.toggle('open');
+    el.classList.toggle('open');
+  }
+
+  /* ── Load game into embed player ── */
+  function loadGame(url, name) {
+    const frame = document.getElementById('gameFrame');
+    const placeholder = document.getElementById('embedPlaceholder');
+    const label = document.getElementById('embed-label');
+    const gameName = document.getElementById('embed-game-name');
+
+    if (!url || url === '#') {
+      alert(`"${name}" — add the game's embed URL to this card's onclick to load it here!`);
+      return;
+    }
+
+    frame.src = url;
+    frame.style.display = 'block';
+    placeholder.style.display = 'none';
+    label.textContent = `// ${name}`;
+    gameName.textContent = name.toUpperCase();
+
+    // Smooth scroll to player
+    document.getElementById('embed-zone').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function reloadGame() {
+    const frame = document.getElementById('gameFrame');
+    if (frame.src) frame.src = frame.src;
+  }
+
+  function fullscreenGame() {
+    const frame = document.getElementById('gameFrame');
+    if (frame.requestFullscreen) frame.requestFullscreen();
+    else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
+  }
+
+  function clearGame() {
+    const frame = document.getElementById('gameFrame');
+    const placeholder = document.getElementById('embedPlaceholder');
+    const label = document.getElementById('embed-label');
+    const gameName = document.getElementById('embed-game-name');
+    frame.src = '';
+    frame.style.display = 'none';
+    placeholder.style.display = 'flex';
+    label.textContent = '// click any game card to load it here';
+    gameName.textContent = 'SELECT A GAME';
+  }
+
+  /* ── Category pill filter ── */
+  document.querySelectorAll('.category-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
